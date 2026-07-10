@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flor de Seda | Elegância em cada detalhe</title>
+    <style>
+        /* Estilos Globais */
+        :root {
+            --primary-color: #1a1a1a;
+            --gold: #c6a87c;
+            --bg-color: #faf9f6;
+            --text-dark: #333;
+            --text-light: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            font-family: 'Georgia', serif;
+            color: var(--gold);
+        }
+
+        .slogan {
+            font-style: italic;
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Seção Sobre a Empresa */
+        .about-section {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .info-card {
+            background: #fff;
+            padding: 1.5rem;
+            border: 1px solid #eaeaea;
+            border-top: 3px solid var(--gold);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Catálogo */
+        .catalog {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.5rem;
+            margin: 3rem 0 1.5rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid #eaeaea;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-buy {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+
+        .btn-buy:hover {
+            background-color: var(--gold);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Modais */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 2.5rem;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .modal-content h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 12px;
+            margin: 1.5rem 0;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .close-btn:hover {
+            color: var(--primary-color);
+        }
+
+        /* Cartão de Sucesso */
+        .success-card {
+            border: 2px solid var(--gold);
+            background: var(--bg-color);
+        }
+
+        .success-card .logo {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Flor de Seda</div>
+        <p class="slogan">"Elegância em cada detalhe."[cite: 1]</p>
+    </header>
+
+    <section class="about-section">
+        <h2>A equação perfeita entre sofisticação e acessibilidade.[cite: 1]</h2>
+        <p>Destinado a pessoas de todas as idades que procuram roupas modernas, elegantes e de qualidade.[cite: 1]</p>
+        
+        <div class="about-grid">
+            <div class="info-card">
+                <h3>Nossa Missão & Visão</h3>
+                <p><strong>Missão:</strong> Oferecer roupas de qualidade que valorizem o estilo e a autoestima dos clientes.[cite: 1]</p>
+                <p><strong>Visão:</strong> Ser referência no ramo de vestuário, reconhecida pela qualidade e pelo bom atendimento.[cite: 1]</p>
+            </div>
+            <div class="info-card">
+                <h3>O Nosso Compromisso</h3>
+                <p>Entendemos a dificuldade de encontrar roupas que equilibrem alta qualidade e estilo moderno sem custos proibitivos. Oferecemos roupas com qualidade, variedade e preço justo, facilitando a escolha dos clientes.[cite: 1]</p>
+                <p><strong>Valores:</strong> Respeito, Satisfação do cliente, Honestidade, Inovação, Compromisso e Qualidade.[cite: 1]</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="catalog">
+        
+        <!-- Moda Masculina -->
+        <h2 class="category-title">Moda Masculina</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <h3 class="product-name">Terno de Lã Fria Super 120</h3>
+                <p class="product-price">R$ 1.250,00</p>
+                <button class="btn-buy" onclick="openModal('Terno de Lã Fria Super 120')">Comprar</button>
+            </div>
+            <div class="product-card">
+                <h3 class="product-name">Camisa Social de Linho Puro</h3>
+                <p class="product-price">R$ 450,00</p>
+                <button class="btn-buy" onclick="openModal('Camisa Social de Linho Puro')">Comprar</button>
+            </div>
+            <div class="product-card">
+                <h3 class="product-name">Calça de Alfaiataria Premium</h3>
+                <p class="product-price">R$ 520,00</p>
+                <button class="btn-buy" onclick="openModal('Calça de Alfaiataria Premium')">Comprar</button>
+            </div>
+        </div>
+
+        <!-- Moda Feminina -->
+        <h2 class="category-title">Moda Feminina</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <h3 class="product-name">Vestido Longo de Seda Pura</h3>
+                <p class="product-price">R$ 1.480,00</p>
+                <button class="btn-buy" onclick="openModal('Vestido Longo de Seda Pura')">Comprar</button>
+            </div>
+            <div class="product-card">
+                <h3 class="product-name">Blazer Acinturado de Crepe</h3>
+                <p class="product-price">R$ 890,00</p>
+                <button class="btn-buy" onclick="openModal('Blazer Acinturado de Crepe')">Comprar</button>
+            </div>
+            <div class="product-card">
+                <h3 class="product-name">Conjunto Saia Midi e Blusa de Cetim</h3>
+                <p class="product-price">R$ 950,00</p>
+                <button class="btn-buy" onclick="openModal('Conjunto Saia Midi e Blusa')">Comprar</button>
+            </div>
+        </div>
+
+        <!-- Moda Infantil -->
+        <h2 class="category-title">Moda Infantil</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <h3 class="product-name">Conjunto Social Infantil (Colete e Calça)</h3>
+                <p class="product-price">R$ 380,00</p>
+                <button class="btn-buy" onclick="openModal('Conjunto Social Infantil')">Comprar</button>
+            </div>
+            <div class="product-card">
+                <h3 class="product-name">Vestido de Festa em Algodão Egípcio</h3>
+                <p class="product-price">R$ 420,00</p>
+                <button class="btn-buy" onclick="openModal('Vestido de Festa Infantil')">Comprar</button>
+            </div>
+        </div>
+
+        <!-- Acessórios -->
+        <h2 class="category-title">Acessórios</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <h3 class="product-name">Colar Unissex Corrente Prata 925</h3>
+                <p class="product-price">R$ 350,00</p>
+                <button class="btn-buy" onclick="openModal('Colar Unissex Prata 925')">Comprar</button>
+            </div>
+            <div class="product-card">
+                <h3 class="product-name">Colar Unissex Geométrico Ouro 18k</h3>
+                <p class="product-price">R$ 410,00</p>
+                <button class="btn-buy" onclick="openModal('Colar Unissex Ouro 18k')">Comprar</button>
+            </div>
+            <div class="product-card">
+                <h3 class="product-name">Brincos de Pérola de Água Doce</h3>
+                <p class="product-price">R$ 290,00</p>
+                <button class="btn-buy" onclick="openModal('Brincos de Pérola')">Comprar</button>
+            </div>
+            <div class="product-card">
+                <h3 class="product-name">Brincos Argola Ouro 18k</h3>
+                <p class="product-price">R$ 680,00</p>
+                <button class="btn-buy" onclick="openModal('Brincos Argola Ouro 18k')">Comprar</button>
+            </div>
+            <div class="product-card">
+                <h3 class="product-name">Pulseira Bracelete Ouro Rose</h3>
+                <p class="product-price">R$ 450,00</p>
+                <button class="btn-buy" onclick="openModal('Pulseira Bracelete Ouro Rose')">Comprar</button>
+            </div>
+            <div class="product-card">
+                <h3 class="product-name">Pulseira de Prata com Zircônias</h3>
+                <p class="product-price">R$ 380,00</p>
+                <button class="btn-buy" onclick="openModal('Pulseira de Prata com Zircônias')">Comprar</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p><strong>Onde a elegância ganha forma:</strong> Avenida Brasil, nº 500, Centro, Umuarama - PR, CEP: 87501-000[cite: 1]</p>
+        <p>Funcionamento: Segunda a sábado, das 9h às 18h[cite: 1]</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Gerida por nossos 32 colaboradores dedicados.[cite: 1] &copy; 2026 Flor de Seda.</p>
+    </footer>
+
+    <!-- Modal de Compra -->
+    <div class="modal-overlay" id="purchaseModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('purchaseModal')">&times;</span>
+            <h3>Finalizar Pedido</h3>
+            <p id="productNameDisplay" style="font-weight: bold; margin-bottom: 1rem;"></p>
+            <p>Para onde devemos enviar sua peça exclusiva?</p>
+            <input type="text" id="addressInput" placeholder="Digite seu endereço completo..." required>
+            <button class="btn-buy" onclick="confirmPurchase()" style="width: 100%;">Confirmar Compra</button>
+        </div>
+    </div>
+
+    <!-- Modal de Sucesso (Cartão) -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content success-card">
+            <span class="close-btn" onclick="closeModal('successModal')">&times;</span>
+            <div class="logo">Flor de Seda</div>
+            <h3 style="color: var(--gold); margin: 1.5rem 0;">Agradecemos a preferência!</h3>
+            <p>Seu pedido foi confirmado com sucesso.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">A elegância está a caminho do seu endereço.</p>
+        </div>
+    </div>
+
+    <!-- Lógica JavaScript -->
+    <script>
+        function openModal(productName) {
+            document.getElementById('productNameDisplay').innerText = productName;
+            document.getElementById('addressInput').value = ""; 
+            document.getElementById('purchaseModal').style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function confirmPurchase() {
+            const address = document.getElementById('addressInput').value;
+            
+            if(address.trim() === "") {
+                alert("Por favor, insira o endereço de entrega para prosseguirmos.");
+                return;
+            }
+
+            closeModal('purchaseModal');
+            document.getElementById('successModal').style.display = 'flex';
+        }
+
+        // Fechar modais ao clicar fora
+        window.onclick = function(event) {
+            const purchaseModal = document.getElementById('purchaseModal');
+            const successModal = document.getElementById('successModal');
+            if (event.target === purchaseModal) {
+                closeModal('purchaseModal');
+            }
+            if (event.target === successModal) {
+                closeModal('successModal');
+            }
+        }
+    </script>
+</body>
+</html>
